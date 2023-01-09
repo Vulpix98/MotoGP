@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FOGUETAOOO</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Russo One' rel='stylesheet'>
+</head>
+
+<body>
+
+    <div class="principal">
+
+        <div class="titulo">
+            <div>
+                <h1>Moto</h1>
+                <h1>GP</h1>
+                <h1>1971</h1>
+            </div>
+
+            <div>
+                <h1>Moto</h1>
+                <h1>GP</h1>
+                <h1>2021</h1>
+            </div>
+        </div>
+
+
+        <table>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li>Valention Rossi</li>
+            <li>Miguel Oliveira</li>
+            <li>Loris Baz</li>
+        </ul>
+
+        <nav>
+            <a href="#">Onde</a>
+            <a href="#">Ranking</a>
+            <a href="#">Pilotos</a>
+            <a href="#formulario">Bilhetes</a>
+        </nav>
+
+        <img src="./imagens/mota.png" class="imgMota">
+
+    </div>
+
+    <div class="formulario" id="formulario">
+        <form action="" method="get">
+            <!--nome-->
+            <label for="nome"><h3>Nome Completo</h3></label>
+            <input type="text" id="nome" name="nome" placeholder="Introduza a sua resposta" maxlength="40" required>
+
+
+            <!--morada-->
+            <label for="morada"><h3>Morada</h3></label>
+            <input type="text" id="morada" name="morada" placeholder="Introduza a sua resposta" maxlength="50" required>
+
+
+            <!--telemovel-->
+            <label for="telemovel"><h3>Número de telemóvel</h3></label>
+            <input type="number" id="telemovel" name="telemovel" placeholder="Introduza a sua resposta" pattern="[0-9]+" maxlength="40" required>
+
+
+            <!--email-->
+            <label for="email"><h3>Email</h3></label>
+            <input type="email" id="email" name="email" placeholder="Introduza a sua resposta" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="40" required>
+
+
+            <!--genero-->
+            <h3>Género</h3>
+            <input type="radio" id="masculino" value="masculino" name="genero" required>
+            <label for="masculino">Masculino</label>
+            <br>
+            <input type="radio" id="feminino" value="feminino" name="genero" required>
+            <label for="feminino">Feminino</label>
+            <br>
+            <input type="radio" id="outro" value="outro" name="genero" required>
+            <label for="outro">Outro</label>
+
+
+            <!--bilhete-->
+            <h3>Bilhetes</h3>
+            <div class="colunas3">
+                <div class="diario fundoBranco">
+                    <h4>Diário</h4>
+                    <div class="preco">
+                        <input type="radio" id="diario" value="diario" name="bilhetes" required>
+                        <label for="diario"><span>5€</span></label>
+                    </div>
+                </div>
+                <div class="doisDias fundoBranco">
+                    <h4>2 Dias</h4>
+                    <div class="preco">
+                        <input type="radio" id="doisDias" value="doisDias" name="bilhetes" required>
+                        <label for="doisDias"><span>7€</span></label>
+                    </div>
+                </div>
+                <div class="premium fundoBranco">
+                    <h4>Premium </h4>
+                    <div class="desconto">-50%</div>
+                    <h4><small>Acesso ao Backstage</small></h4>
+                    <div class="preco">
+                        <input type="radio" id="premium" value="premium" name="bilhetes" required>
+                        <label for="premium"><small><del>20€</del></small> <span>10€</span></label>
+                        <!-- reparei que no firefox a propriedade del é diferento do que o chrome, ficando muito melhor aspeto no chrome -->
+                    </div>
+                </div>
+            </div>
+
+
+            <!--extras-->
+            <h3>Extras</h3>
+            <input type="checkbox" value="conhecerPiloto" id="conhecerPiloto">
+            <label for="conhecerPiloto"><span>100€</span> - Conhecer um piloto à sua escolha</label>
+
+
+            <!--comida-->
+            <h3>Comida</h3>
+            <div class="colunas3">
+                <div>
+                    <div class="inputDrt fundoBranco">
+                        <label for="carne">Carne</label>
+                        <input type="radio" id="carne" value="carne" name="comida" required>
+                    </div>
+                    <img src="./imagens/carne.png" class="imgComida">
+                </div>
+
+                <div>
+                    <div class="inputDrt fundoBranco">
+                        <label for="peixe">Peixe</label>
+                        <input type="radio" id="peixe" value="peixe" name="comida" required>
+                    </div>
+                    <img src="./imagens/peixe.png" class="imgComida">
+                </div>
+
+                <div>
+                    <div class="inputDrt fundoBranco">
+                        <label for="vegan">Vegan</label>
+                        <input type="radio" id="vegan" value="vegan" name="comida" required>
+                    </div>
+                    <img src="./imagens/vegan.png" class="imgComida">
+                </div>
+            </div>
+
+
+
+            <!--botao submeter e reset-->
+            <div class="botoesFinais">
+                <input type="reset" value="Cancelar">
+                <input type="submit" value="Submeter">
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>

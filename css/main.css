@@ -1,0 +1,521 @@
+html,
+body {
+    margin: 0px;
+    /* background-image: url('../imagens/background.png');
+    background-position-y: -43px;*/
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* esta propriedade ao clicar nos bilhetes o movimento nao era instantaneo, mas sim devagar */
+}
+
+
+/* diz a pag para ter sempre o estilo de letra definido pelo professor */
+
+body {
+    position: relative;
+    overflow-y: hidden;
+    font-family: 'Russo One';
+    letter-spacing: 1px;
+}
+
+
+/* utilizei var, 
+assim era mais facil,
+tenho sempre ja as cores e tamanho definidos para o resto da pag
+querendo alterar o tamanho ou cor, bastava alterar a var 
+*/
+
+:root {
+    --corLaranja: #FE7700;
+    --corVermelho: #CD0000;
+    --corPreta: #000000;
+    --corBranco: #FFFFFF;
+    --tamanhoM: 139px;
+    --tamanhom: 24.3px;
+    --tamanhop: 16px;
+}
+
+.principal {
+    height: 100vh;
+    /*background-image: url('../ProjetoA/imagens/background.png');*/
+    background-image: url('../imagens/background.png');
+    background-position-y: -43px;
+    background-position-x: -24.5px;
+    position: relative;
+}
+
+@media only screen and (min-width: 1281px) {
+    .principal {
+        background-image: url('../imagens/background.png');
+        /* background-image: url('../ProjetoA/imagens/background.png');*/
+        background-size: cover;
+        background-position-y: -62px;
+        background-position-x: 0;
+    }
+}
+
+
+/* ----- TITULO ----- INICIO */
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    top: 69px;
+    position: relative;
+}
+
+.titulo div:first-child {
+    z-index: 1;
+}
+
+.titulo div:last-child {
+    position: absolute;
+    transform: translateX(-10px);
+    z-index: 0;
+}
+
+.titulo h1 {
+    font-size: var(--tamanhoM);
+    margin: 0px;
+}
+
+.titulo div:first-child h1 {
+    color: var(--corBranco);
+}
+
+.titulo div:last-child h1 {
+    color: var(--corVermelho);
+}
+
+
+/* ----- TITULO ----- FIM */
+
+
+/* ----- tabela ----- INICIO */
+
+
+/* o pensamento foi simples, pensei os td como se fossem div,
+    dando assim uma altura e largura, cor de fundo  */
+
+table {
+    position: absolute;
+    top: 86px;
+    right: 128.2px;
+    border-spacing: 4px;
+}
+
+td {
+    height: 40px;
+    width: 40px;
+    background-color: var(--corVermelho);
+    margin: 2px;
+}
+
+
+/* ----- tabela ----- FIM */
+
+
+/* ----- lista de atletas ----- inicio */
+
+
+/* o pensamento, melhor forma de fazer era uma lista
+    e que os 'li' iam ter que vir de fora do ecra dando um right: -250px
+    e quando terminavam iam ter que ficar na posiçao original dando animation-fill-mode: forwards; 
+*/
+
+ul {
+    position: absolute;
+    top: 240px;
+    right: 109px;
+}
+
+li {
+    color: var(--corBranco);
+    position: relative;
+    right: 0;
+    opacity: 0;
+    font-size: var(--tamanhom);
+}
+
+li:first-child {
+    animation: nomesVemDireita;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+li:nth-child(2) {
+    animation: nomesVemDireita;
+    animation-duration: 1s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+li:last-child {
+    animation: nomesVemDireita;
+    animation-duration: 1s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
+
+ul li::marker {
+    color: var(--corVermelho);
+}
+
+@keyframes nomesVemDireita {
+    from {
+        right: -250px;
+    }
+    100% {
+        right: 0;
+        opacity: 1;
+    }
+}
+
+
+/* ----- lista de atletas ----- FIM */
+
+
+/* ----- nav ----- INICIO */
+
+
+/*  pensamento sobre a posiçao e organizaçao:
+    sendo position fixed, o elemento pai ia ter position: relative,
+    como era para ficar na parte de baixo e do lado direito do ecra
+    dei um bottom: 0 e right: 0
+
+    sobre a organizaçao- como a barra tem 4 elementos pensei 100% da largura a dividir por 4
+    dando os 25% de largura, o texto tenha que ficar no centro na vertical e horizonta
+    dei um flex, 
+    futaramente soube que o grid ao fazer place-items center 
+    é igual a dar justify-content e align-items center, deixando no como grid 
+*/
+
+
+/*
+    pensamento sobre o hover da barra
+    tentei inicial um div com forma de triangulo que inicial estava display none
+    e dando hover ia ter display block, tambem pensei dar opacity 0 e dando hover opacity 1
+    nao funcionou, foi pesquisar e aprendi o pseudo element before e afer
+    sendo assim pensei que os 'a' iam ter um after na forma do triangulo
+    o after no inicio tem scale 0 e ao fazer hover passa para scale
+    optei pelo scale assim efeito animado
+
+    olhando agora para o codigo era melhor utilizar o before evitando utilar o bottom 54px
+*/
+
+nav {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 50vw;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background-color: var(--corBranco);
+    z-index: 100;
+}
+
+nav a {
+    width: 25vw;
+    height: 41px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;*/
+    display: grid;
+    /* elemento aprendido fora de aula  */
+    place-items: center;
+    /* é mesmo que utilizar justify-content e align-items center, assim faço so numa linha de codigo */
+    color: var(--corPreta);
+    font-size: var(--tamanhom);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+nav a:nth-child(1),
+a:nth-child(3) {
+    background-color: var(--corVermelho);
+}
+
+nav a:nth-child(2) {
+    background-color: var(--corLaranja);
+}
+
+nav a:last-child {
+    color: var(--corLaranja);
+    background-color: var(--corPreta);
+}
+
+nav a::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    position: absolute;
+    transform: scale(0);
+    transition: ease-out 150ms;
+}
+
+nav a:hover::after {
+    transform: scale(1);
+    bottom: 54px;
+}
+
+nav a:nth-child(1):hover::after,
+a:nth-child(3):hover::after {
+    border-bottom: 14.5px solid var(--corVermelho);
+}
+
+nav a:nth-child(2):hover::after {
+    border-bottom: 14.5px solid var(--corLaranja);
+}
+
+nav a:last-child:hover::after {
+    border-bottom: 14.5px solid var(--corPreta);
+}
+
+
+/* ----- nav ----- FIM */
+
+
+/* ----- imagem ---- inicio */
+
+.imgMota {
+    position: absolute;
+    left: 63.5px;
+    bottom: -22px;
+}
+
+
+/* ----- imagem ---- fim */
+
+
+/* ----- formumalio ---- inicio */
+
+.formulario {
+    position: relative;
+    padding: 10rem 0;
+    background-color: hsl(0, 100%, 40%, 25%);
+    transition: 500ms;
+}
+
+
+/* 
+elemento aprendido fora de aula 
+
+tentativa de fazer hover num input afetando o fundo da pag
+
+com o pseudo elemento 'focus-within'
+quando um elemento dentro do formulario é pressionado o fundo do formulario muda
+
+sendo assim mais/menos o que o professor queria
+*/
+
+.formulario:focus-within {
+    background-color: hsl(28, 100%, 50%, 20%);
+    transition: 500ms;
+}
+
+.formulario form {
+    width: 50%;
+    margin: auto;
+    padding-bottom: 8rem;
+    position: relative;
+}
+
+span {
+    color: var(--corVermelho);
+}
+
+h4 {
+    margin: 0.75rem;
+    font-size: var(--tamanhop);
+}
+
+small {
+    font-size: 13px;
+}
+
+
+/* remover as setas no chrome para aumentar ou diminuir no tipo input number */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input,
+label {
+    font-size: var(--tamanhop);
+}
+
+input[type=text],
+input[type=number],
+input[type=email] {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid gray;
+    padding: 0.5em;
+    border-radius: 4px
+}
+
+.formulario h3 {
+    display: list-item;
+    list-style-position: inside;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: var(--tamanhom);
+}
+
+.formulario h3::marker {
+    color: var(--corVermelho);
+}
+
+input[type=radio],
+input[type=checkbox] {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 2px;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.colunas3 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.colunas3>* {
+    flex-basis: 30%;
+    /* elemento aprendido fora de aula +/- ) basicamente os filhos vao ter 30% de largura */
+    /* width: 30%;  que era a mesma que isto, mas decide experimentar esse novo elemento */
+}
+
+.fundoBranco {
+    background-color: var(--corBranco);
+}
+
+.colunas3 .diario,
+.colunas3 .doisDias,
+.colunas3 .premium {
+    height: 8em;
+    border: 2px solid gray;
+    border-radius: 4px;
+    position: relative;
+}
+
+.preco {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0.5rem;
+}
+
+.desconto {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+    background-color: var(--corLaranja);
+    padding: 0.5rem;
+    width: max-content;
+    height: max-content;
+    border-radius: 5px;
+    font-size: 14pt;
+    animation: desconto;
+    animation-duration: 5s;
+    animation-delay: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes desconto {
+    from {
+        transform: scale(1);
+    }
+    3% {
+        transform: scale(1.2);
+    }
+    6% {
+        transform: scale(1);
+    }
+    9% {
+        transform: scale(1.2);
+    }
+    12%,
+    100% {
+        transform: scale(1);
+    }
+}
+
+.inputDrt {
+    position: relative;
+    border: 2px solid gray;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    padding: 0.500rem;
+}
+
+.inputDrt input {
+    position: absolute;
+    right: 5px;
+    top: 0;
+}
+
+.imgComida {
+    width: 100%;
+    aspect-ratio: 1 / 0.7;
+    /* elemento aprendido fora de aula - a imagem vai ter 70% de altura relativamente a largura dela */
+    transition: 300ms;
+    transform-origin: top center;
+    /* elemento aprendido fora de aula +/- */
+}
+
+.imgComida:hover {
+    transform: scale(1.17);
+}
+
+.botoesFinais {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+input[type=reset],
+input[type=submit] {
+    box-sizing: border-box;
+    padding: 0.75em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    border-style: solid;
+    transition: 300ms;
+    font-size: unset;
+    font-weight: bold;
+}
+
+input[type=reset] {
+    margin-right: 5px;
+    background-color: var(--corBranco);
+    border-color: var(--corVermelho);
+    color: var(--corVermelho);
+}
+
+input[type=reset]:hover {
+    background-color: var(--corVermelho);
+    color: var(--corBranco);
+    transition: 300ms;
+}
+
+input[type=submit] {
+    background-color: var(--corBranco);
+    border-color: #00CD00;
+    color: #00CD00;
+}
+
+input[type=submit]:hover {
+    background-color: #00CD00;
+    color: var(--corBranco);
+    transition: 300ms;
+}
+
+
+/* ----- formumalio ---- fim */
